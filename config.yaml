@@ -1,0 +1,18 @@
+search:
+  # arXiv categories to search (cs.LG=Machine Learning, cs.CL=Computation & Language,
+  # cs.AI=Artificial Intelligence, stat.ML=Statistics/ML)
+  categories: ["cs.LG", "cs.CL", "cs.AI", "stat.ML"]
+  keywords: ["data extraction", "large language model", "LLM training", "data analytics"]
+  max_results: 150
+  days_back: 60
+
+target:
+  country_filter: "US"
+  batch_size: 20
+
+sender:
+  name: "Angelina Wu"
+  # Gmail address to send FROM (set this before running send step)
+  email: "aw5287@stern.nyu.edu"
+  linkedin: "https://linkedin.com/in/angelina-wu-nyu"
+  github: "https://github.com/TangelinaWu"
