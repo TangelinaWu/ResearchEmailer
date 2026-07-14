@@ -8,7 +8,7 @@ import os
 import re
 
 from contacts_store import load_contacts, save_contacts, upsert
-from draft_generator import first_name, safe_filename
+from draft_generator import first_name, safe_filename, position_ask_for_region
 
 DRAFTS_DIR = os.path.join(os.path.dirname(__file__), "..", "drafts")
 
@@ -23,7 +23,7 @@ My name is Angelina Wu. I'm an undergraduate studying Computer Science & Economi
 
 I'm currently a software engineering intern at Lea Technologies, where I work on document taxonomy, data validation, and parsing pipelines. I also have hands-on experience scraping, processing, and cleaning data from independent projects, and I'm especially interested in working with ML data. I primarily work in Python, using pandas, regex, and pypdf for parsing and cleaning, and SQL for data storage and querying.
 
-I'm looking for a paid, part-time undergraduate research position for fall 2026 or spring 2027, and I'd love to work under your mentorship if that timeline works for you. Would you be open to a brief call, or could you point me to how your lab typically brings on undergraduate researchers?
+{position_ask}
 
 Thank you for your time and for the work you're doing. I really enjoyed learning about your research.
 
@@ -333,6 +333,7 @@ def main():
             body = BODY_TEMPLATE.format(
                 first_name=first_name(pi["name"]),
                 opening=pi["opening"],
+                position_ask=position_ask_for_region(contact["region"]),
                 linkedin=SENDER["linkedin"],
                 github=SENDER["github"],
             )
