@@ -31,48 +31,47 @@ SENDER = {
 
 SUBJECT = "Request for Greene HPC Sponsorship — CNN/MRI Brain Aging Research"
 
-SPONSORSHIP_ASK = (
-    "We would be incredibly grateful if you would be willing to act as our sponsoring faculty "
-    "for Greene access — this would mean adding Prof. Ardekani's lab account to your allocation. "
-    "We would manage our own usage within whatever limits make sense and are happy to share "
-    "results, include acknowledgments, or explore a more formal collaboration if there is interest. "
-    "I would also love to schedule a brief call (15–20 minutes) at your convenience to introduce "
-    "the team and answer any questions. Please suggest a time that works for you, or simply reply "
-    "and I will send a calendar invite."
-)
-
 BODY_TEMPLATE = """Dear Professor {last_name},
 
 I hope this message finds you well. {opening}
 
-I am reaching out because our research team is working on a CNN-based pipeline for MRI brain \
-age prediction and early detection of neurodegenerative disease, and we need a sponsoring NYU \
-faculty member to grant us access to the Greene GPU cluster.
+I am writing to ask if you would be willing to sponsor our research team for access to NYU's \
+Greene GPU cluster. Our PI, Prof. Babak Ardekani, is affiliated with NYU Grossman School of \
+Medicine rather than the main campus, so his lab does not automatically receive Greene access — \
+a sponsoring NYU faculty member is all that is needed to bridge that gap.
 
-A brief overview of our team and project:
+**Our Team**
 
-- Prof. Babak Ardekani (Nathan S. Kline Institute / NYU Grossman School of Medicine) — our PI, \
-whose ART registration toolbox forms the backbone of our preprocessing pipeline. Because Prof. \
-Ardekani is affiliated with the Grossman School of Medicine rather than the main NYU campus, his \
-lab does not currently have access to NYU Greene, and a sponsoring faculty member is needed to \
-bridge that gap.
-- Angelina Wu — research engineer, pipeline development and model training.
-- Amir — PhD student, Hong Kong University of Science and Technology, deep learning architecture \
-and longitudinal analysis.
-- Nathan — Northeastern University, data processing and evaluation.
+- Prof. Babak Ardekani, PhD (PI) — Nathan S. Kline Institute / NYU Grossman School of Medicine. \
+Over 25 years in computational neuroimaging, author of the ART (Automatic Registration Toolbox) \
+used by labs worldwide, with 100+ peer-reviewed publications on MRI brain registration and \
+Alzheimer's detection.
+- Angelina Wu — research engineer, NYU CS & Economics '28. Pipeline architecture, preprocessing, \
+and model training.
+- Amir — PhD student, HKUST. Deep learning architecture and longitudinal analysis.
+- Nathan — undergraduate researcher, Northeastern University. Data processing and evaluation.
 
-Our project trains 3D CNNs on structural MRI to predict brain age, compute the Brain Age Gap \
-(BAG) as a biomarker for accelerated aging, and build a generalizable model for detecting early \
-signs of Alzheimer's disease and related conditions. GPU compute is essential — our 3D SFCN/\
-ResNet models train on full-resolution 182×218×182 volumes and take roughly 12–24 hours per run \
-on a single A100.
+**The Project**
 
-{sponsorship_ask}
+We are training 3D CNNs on structural MRI to predict brain age and compute the Brain Age Gap \
+(BAG) — a biomarker for accelerated neurodegeneration linked to Alzheimer's disease and \
+frontotemporal dementia. Our data comes from ADNI and OASIS-3 (several thousand scans). \
+Training a single model takes 12–24 hours on an A100; across experiments we estimate \
+500–800 GPU hours and ~2 TB of storage — well within a typical faculty allocation, and we \
+would stay within any sub-limits you set.
 
-Thank you so much for your time and consideration.
+Sponsoring us would mean a one-time administrative step to add Prof. Ardekani's account to \
+your allocation. We would handle everything else independently and are happy to share results, \
+include acknowledgments, or explore collaboration if there is interest.
+
+I would love to get on a short call with you to discuss the specifics — 15 to 20 minutes at \
+your convenience. Feel free to suggest a time, or just reply and I will send a calendar invite.
+
+Thank you so much for considering this.
 
 Warmly,
 Angelina Wu
+NYU, CS & Economics '28
 {email}
 """
 
@@ -742,7 +741,6 @@ def main():
             body = BODY_TEMPLATE.format(
                 last_name=last,
                 opening=prof["opening"],
-                sponsorship_ask=SPONSORSHIP_ASK,
                 email=SENDER["email"],
             )
             fname = safe_filename(prof["name"], arxiv_id)
