@@ -87,7 +87,7 @@ PROFESSORS = [
     # ── Courant / CS ──────────────────────────────────────────────────────────
     dict(
         name="Yann LeCun",
-        email="yann@cs.nyu.edu",
+        email="yann@nyu.edu",
         email_status="ready",
         profile_url="http://yann.lecun.com",
         focus_label="Deep learning, convolutional networks, computer vision",
@@ -98,7 +98,7 @@ PROFESSORS = [
     ),
     dict(
         name="Joan Bruna",
-        email="bruna@cims.nyu.edu",
+        email="bruna@nyu.edu",
         email_status="ready",
         profile_url="http://cims.nyu.edu/~bruna",
         focus_label="Geometric deep learning, graph neural networks, ML theory",
@@ -109,7 +109,7 @@ PROFESSORS = [
     ),
     dict(
         name="Andrew Gordon Wilson",
-        email="andrewgw@cims.nyu.edu",
+        email="andrewgw@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~andrewgw",
         focus_label="Bayesian deep learning, uncertainty quantification",
@@ -152,7 +152,7 @@ PROFESSORS = [
     ),
     dict(
         name="Mehryar Mohri",
-        email="mohri@cs.nyu.edu",
+        email="mohri@nyu.edu",
         email_status="ready",
         profile_url="http://cs.nyu.edu/cs/faculty/mohri/",
         focus_label="ML theory, LLMs, game theory",
@@ -163,7 +163,7 @@ PROFESSORS = [
     ),
     dict(
         name="Rajesh Ranganath",
-        email="rajeshr@cims.nyu.edu",
+        email="rajeshr@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~rajeshr/",
         focus_label="Probabilistic ML, deep learning for healthcare, clinical AI",
@@ -173,7 +173,7 @@ PROFESSORS = [
     ),
     dict(
         name="Subhash Khot",
-        email="khot@cs.nyu.edu",
+        email="khot@nyu.edu",
         email_status="ready",
         profile_url="http://cs.nyu.edu/~khot/",
         focus_label="Computational complexity, approximation algorithms",
@@ -184,7 +184,7 @@ PROFESSORS = [
     ),
     dict(
         name="Dennis Shasha",
-        email="shasha@cs.nyu.edu",
+        email="shasha@nyu.edu",
         email_status="ready",
         profile_url="http://cs.nyu.edu/cs/faculty/shasha/",
         focus_label="Database systems, time series, bioinformatics",
@@ -195,7 +195,7 @@ PROFESSORS = [
     ),
     dict(
         name="Denis Zorin",
-        email="dzorin@cs.nyu.edu",
+        email="dzorin@nyu.edu",
         email_status="ready",
         profile_url="http://cs.nyu.edu/~dzorin/",
         focus_label="Computer graphics, geometric modeling, NYU AI Initiative director",
@@ -205,7 +205,7 @@ PROFESSORS = [
     ),
     dict(
         name="Lakshminarayanan Subramanian",
-        email="lakshmi@cs.nyu.edu",
+        email="lakshmi@nyu.edu",
         email_status="ready",
         profile_url="http://cs.nyu.edu/~lakshmi/",
         focus_label="Networked systems, AI for health, computing for development",
@@ -217,7 +217,7 @@ PROFESSORS = [
     # ── Center for Data Science ───────────────────────────────────────────────
     dict(
         name="Carlos Fernandez-Granda",
-        email="cfgranda@cims.nyu.edu",
+        email="cfgranda@nyu.edu",
         email_status="ready",
         profile_url="https://math.nyu.edu/~cfgranda/",
         focus_label="ML for medicine, MRI reconstruction, computational biology",
@@ -239,7 +239,7 @@ PROFESSORS = [
     ),
     dict(
         name="Jonathan Niles-Weed",
-        email="jnw@cims.nyu.edu",
+        email="jnw@nyu.edu",
         email_status="ready",
         profile_url="https://www.jonathannilesweed.com/",
         focus_label="High-dimensional statistics, optimal transport",
@@ -540,7 +540,7 @@ PROFESSORS = [
     # ── Courant Math ──────────────────────────────────────────────────────────
     dict(
         name="Georg Stadler",
-        email="stadler@cims.nyu.edu",
+        email="stadler@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~stadler/",
         focus_label="Scientific computing, inverse problems, PDE-constrained optimization",
@@ -551,7 +551,7 @@ PROFESSORS = [
     ),
     dict(
         name="Benjamin Peherstorfer",
-        email="pehersto@cims.nyu.edu",
+        email="pehersto@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~pehersto/",
         focus_label="Scientific computing, model reduction, neural Galerkin schemes",
@@ -562,7 +562,7 @@ PROFESSORS = [
     ),
     dict(
         name="Esteban Tabak",
-        email="tabak@cims.nyu.edu",
+        email="tabak@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~tabak/",
         focus_label="Fluid dynamics, probability, transport phenomena",
@@ -572,7 +572,7 @@ PROFESSORS = [
     ),
     dict(
         name="Robert Kohn",
-        email="kohn@cims.nyu.edu",
+        email="kohn@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~kohn/",
         focus_label="Applied mathematics, variational methods",
@@ -582,7 +582,7 @@ PROFESSORS = [
     ),
     dict(
         name="Jonathan Goodman",
-        email="goodman@cims.nyu.edu",
+        email="goodman@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~goodman/",
         focus_label="Numerical methods, Monte Carlo, computational science",
@@ -603,7 +603,7 @@ PROFESSORS = [
     ),
     dict(
         name="Fanghua Lin",
-        email="linf@cims.nyu.edu",
+        email="linf@nyu.edu",
         email_status="ready",
         profile_url="https://cims.nyu.edu/~linf/",
         focus_label="Partial differential equations, geometric analysis",
@@ -635,7 +635,7 @@ PROFESSORS = [
     ),
     dict(
         name="Sumit Chopra",
-        email="sumit@cs.nyu.edu",
+        email="sumit@nyu.edu",
         email_status="ready",
         profile_url="https://www.spchopra.net/",
         focus_label="ML for medical imaging, MRI triaging, multi-modal learning",
@@ -657,7 +657,7 @@ PROFESSORS = [
     ),
     dict(
         name="Rob Fergus",
-        email="fergus@cs.nyu.edu",
+        email="fergus@nyu.edu",
         email_status="ready",
         profile_url="http://cs.nyu.edu/~fergus/",
         focus_label="Computer vision, self-supervised learning, deep learning",
