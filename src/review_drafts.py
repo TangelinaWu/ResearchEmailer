@@ -9,7 +9,10 @@ PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 
 def main():
     contacts = load_contacts()
-    to_review = [c for c in contacts if c["status"] == "drafted"]
+    to_review = [
+        c for c in contacts
+        if c["status"] == "drafted" and c.get("arxiv_id", "").startswith("greene-hpc-")
+    ]
     if not to_review:
         print("No drafted contacts to review.")
         return
@@ -23,7 +26,7 @@ def main():
         domain = c["email"].split("@")[-1] if "@" in c["email"] else "?"
         print("=" * 70)
         print(f"[{i}/{len(to_review)}] {c['name']}  <{c['email']}>  (domain: {domain})")
-        print(f"Paper: {c['paper_title']}")
+        print(f"Focus: {c['paper_title']}")
         print("-" * 70)
         print(content)
         print("-" * 70)
