@@ -63,7 +63,8 @@ Grossman School of Medicine rather than the main campus, so his lab does not \
 automatically receive Greene access — a sponsoring NYU faculty member is all that is \
 needed to bridge that gap.
 
-Our Team:
+**Our Team**
+
 - Prof. Babak Ardekani, PhD (PI) — Nathan S. Kline Institute / NYU Grossman School of \
 Medicine. Over 25 years in computational neuroimaging, author of the ART (Automatic \
 Registration Toolbox) used by labs worldwide, with 100+ peer-reviewed publications on \
@@ -73,7 +74,8 @@ preprocessing, and model training.
 - Amir — PhD student, HKUST. Deep learning architecture and longitudinal analysis.
 - Nathan — undergraduate researcher, Northeastern University. Data processing and evaluation.
 
-Our Project:
+**The Project**
+
 We are training 3D CNNs on structural MRI to predict brain age and compute the Brain Age \
 Gap (BAG) — a biomarker for accelerated neurodegeneration linked to Alzheimer's disease \
 and frontotemporal dementia. Our data comes from ADNI and OASIS-3 (several thousand scans). \
