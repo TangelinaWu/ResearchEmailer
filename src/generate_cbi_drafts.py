@@ -25,11 +25,11 @@ I'm currently a software engineering intern at Lea Technologies, where I work on
 
 {position_ask}
 
-Thank you for your time and for the work you're doing. I really enjoyed learning about your research.
+Thank you for your time and for the work you're doing. I really enjoyed learning about your research. I've attached my resume for your reference.
 
 Best,
 Angelina Wu
-{linkedin} | {github}
+aw5287@nyu.edu | {linkedin} | {github}
 """
 
 PIS = [
@@ -333,7 +333,7 @@ def main():
             body = BODY_TEMPLATE.format(
                 first_name=first_name(pi["name"]),
                 opening=pi["opening"],
-                position_ask=position_ask_for_region(contact["region"]),
+                position_ask=position_ask_for_region(contact["region"], pi["email"]),
                 linkedin=SENDER["linkedin"],
                 github=SENDER["github"],
             )

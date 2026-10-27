@@ -10,24 +10,44 @@ DRAFTS_DIR = os.path.join(os.path.dirname(__file__), "..", "drafts")
 
 SUBJECT_TEMPLATE = "Undergrad Researcher Interested in Your Work"
 
-PAID_INPERSON_ASK = (
-    "I'm looking for a paid, part-time undergraduate research position on-site in the NYC area "
-    "for fall 2026 or spring 2027, and I'd love to work under your mentorship if that timeline "
-    "works for you. Would you be open to a brief call, or could you point me to how your lab/team "
-    "typically brings on undergraduate researchers?"
+NYU_COLUMBIA_DOMAINS = {"nyu.edu", "nyulangone.org", "columbia.edu", "cumc.columbia.edu"}
+
+NYC_UNPAID_ASK = (
+    "I'd love to be considered for a paid position, though unpaid works for me too—the opportunity "
+    "to learn under your mentorship matters more to me than compensation. I'm available part-time, "
+    "on-site in the NYC area, to start now, fall 2026, or spring 2027. Would you be open to a "
+    "brief call, or could you point me to how your lab/team typically brings on undergraduate "
+    "researchers?"
+)
+
+NYU_COLUMBIA_ASK = (
+    "I'd love to be considered for a paid position, though unpaid works for me too (ideally for "
+    "NYU research credit)—the opportunity to learn under your mentorship matters more to me than "
+    "compensation. I'm available part-time to start now, fall 2026, or spring 2027. Would you be "
+    "open to a brief call, or could you point me to how your lab typically brings on NYU "
+    "undergraduate researchers?"
 )
 
 UNPAID_REMOTE_ASK = (
-    "I'm looking for a remote, part-time undergraduate research position, unpaid to start, "
-    "for fall 2026 or spring 2027, and I'd love to work under your mentorship if that timeline "
-    "works for you. Would you be open to a brief call, or could you point me to how your lab/team "
-    "typically brings on undergraduate researchers?"
+    "I'd love to be considered for a paid position, though unpaid works for me too—the opportunity "
+    "to learn under your mentorship matters more to me than compensation. I'm available part-time "
+    "and remotely, to start now, fall 2026, or spring 2027. Would you be open to a brief call, or "
+    "could you point me to how your lab/team typically brings on undergraduate researchers?"
 )
 
 
-def position_ask_for_region(region):
-    """NYC tristate contacts get the paid/on-site pitch; everyone else gets remote/unpaid."""
-    return PAID_INPERSON_ASK if region == "nyc_tristate" else UNPAID_REMOTE_ASK
+def _is_nyu_columbia(domain):
+    if domain in NYU_COLUMBIA_DOMAINS:
+        return True
+    return domain.endswith(".nyu.edu") or domain.endswith(".columbia.edu") or domain.endswith(".nyulangone.org")
+
+
+def position_ask_for_region(region, email=""):
+    """Return the right position-ask paragraph based on region and email domain."""
+    if region == "nyc_tristate":
+        domain = email.strip().lower().split("@")[-1] if "@" in email else ""
+        return NYU_COLUMBIA_ASK if _is_nyu_columbia(domain) else NYC_UNPAID_ASK
+    return UNPAID_REMOTE_ASK
 
 
 BODY_TEMPLATE = """Dear {first_name},
@@ -38,11 +58,11 @@ I'm currently a software engineering intern at Lea Technologies, where I work on
 
 {position_ask}
 
-Thank you for your time and for the work you're putting into the field. I really enjoyed reading your paper.
+Thank you for your time and for the work you're putting into the field. I really enjoyed reading your paper. I've attached my resume for your reference.
 
 Best,
 Angelina Wu
-{linkedin} | {github}
+aw5287@nyu.edu | {linkedin} | {github}
 """
 
 
@@ -79,7 +99,7 @@ def generate_draft(contact, sender_cfg):
         paper_title=contact["paper_title"],
         paper_url=contact["paper_url"],
         topic_hook=topic_hook_from_abstract(contact["abstract"]),
-        position_ask=position_ask_for_region(contact.get("region", "remote")),
+        position_ask=position_ask_for_region(contact.get("region", "remote"), contact.get("email", "")),
         linkedin=sender_cfg["linkedin"],
         github=sender_cfg["github"],
     )
@@ -91,18 +111,29 @@ def safe_filename(name, arxiv_id):
     return f"{slug}_{arxiv_id}.txt"
 
 
+def _nyu_columbia_first(c):
+    domain = c["email"].split("@")[-1].lower() if "@" in c["email"] else ""
+    return 0 if domain in NYU_COLUMBIA_DOMAINS else 1
+
+
 def main():
     with open("../config.yaml") as f:
         cfg = yaml.safe_load(f)
 
     os.makedirs(DRAFTS_DIR, exist_ok=True)
     contacts = load_contacts()
+    batch_size = cfg["target"]["batch_size"]
+
+    # NYC metropolitan area only; NYU and Columbia contacts first
+    eligible = [
+        c for c in contacts
+        if c["status"] == "ready" and c["email"] and c.get("region") == "nyc_tristate"
+    ]
+    eligible.sort(key=_nyu_columbia_first)
+    batch = eligible[:batch_size]
 
     generated = 0
-    for c in contacts:
-        if c["status"] != "ready" or not c["email"]:
-            continue
-
+    for c in batch:
         subject, body = generate_draft(c, cfg["sender"])
         fname = safe_filename(c["name"], c["arxiv_id"])
         path = os.path.join(DRAFTS_DIR, fname)
@@ -114,7 +145,9 @@ def main():
         generated += 1
 
     save_contacts(contacts)
-    print(f"Generated {generated} drafts in {DRAFTS_DIR}/")
+    nyu_col = sum(1 for c in batch if _nyu_columbia_first(c) == 0)
+    print(f"Generated {generated} drafts in {DRAFTS_DIR}/  "
+          f"({nyu_col} NYU/Columbia, {generated - nyu_col} other NYC)")
 
 
 if __name__ == "__main__":

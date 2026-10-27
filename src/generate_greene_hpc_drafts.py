@@ -26,7 +26,7 @@ from draft_generator import first_name, safe_filename
 DRAFTS_DIR = os.path.join(os.path.dirname(__file__), "..", "drafts")
 
 SENDER = {
-    "email": "angelina@getlea.io",
+    "email": "aw5287@nyu.edu",
 }
 
 SUBJECT = "Request for Greene HPC Sponsorship — CNN/MRI Brain Aging Research"

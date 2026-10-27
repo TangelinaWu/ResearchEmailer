@@ -1,7 +1,6 @@
 """Step 4: send approved drafts via the Gmail API (OAuth)."""
 import base64
 import os
-from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -16,8 +15,6 @@ from contacts_store import load_contacts, save_contacts
 SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 CREDENTIALS_PATH = os.path.join(os.path.dirname(__file__), "..", "credentials.json")
 TOKEN_PATH = os.path.join(os.path.dirname(__file__), "..", "token.json")
-RESUME_PATH = os.path.join(os.path.dirname(__file__), "..", "resume.pdf")
-RESUME_FILENAME = "Angelina Wu Resume.pdf"
 
 
 def get_gmail_service():
@@ -54,17 +51,13 @@ def send_message(service, sender, to, subject, body):
     message["subject"] = subject
     message.attach(MIMEText(body))
 
-    with open(RESUME_PATH, "rb") as f:
-        attachment = MIMEApplication(f.read(), _subtype="pdf")
-    attachment.add_header("Content-Disposition", "attachment", filename=RESUME_FILENAME)
-    message.attach(attachment)
-
     raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
     return service.users().messages().send(userId="me", body={"raw": raw}).execute()
 
 
 def main():
-    with open("../config.yaml") as f:
+    config_path = os.path.join(os.path.dirname(__file__), "..", "config.yaml")
+    with open(config_path) as f:
         cfg = yaml.safe_load(f)
     sender = cfg["sender"]["email"]
     if not sender:

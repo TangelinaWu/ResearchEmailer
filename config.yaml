@@ -8,11 +8,11 @@ search:
 
 target:
   country_filter: "US"
-  batch_size: 20
+  batch_size: 50
 
 sender:
   name: "Angelina Wu"
   # Gmail address to send FROM (set this before running send step)
-  email: "aw5287@stern.nyu.edu"
+  email: "aw5287@nyu.edu"
   linkedin: "https://linkedin.com/in/angelina-wu-nyu"
   github: "https://github.com/TangelinaWu"

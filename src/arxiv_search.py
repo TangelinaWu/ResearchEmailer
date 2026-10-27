@@ -66,7 +66,7 @@ def search_papers(categories, keywords, max_results=150, days_back=60):
 if __name__ == "__main__":
     import yaml
 
-    with open("config.yaml") as f:
+    with open("../config.yaml") as f:
         cfg = yaml.safe_load(f)
     results = search_papers(**cfg["search"])
     print(f"Found {len(results)} papers")

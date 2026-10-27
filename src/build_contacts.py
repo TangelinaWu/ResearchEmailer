@@ -1,4 +1,5 @@
 """Step 1: search arXiv, extract emails where possible, write data/contacts.csv."""
+import os
 import sys
 import time
 
@@ -13,6 +14,8 @@ from region import classify_region
 def main():
     with open("../config.yaml") as f:
         cfg = yaml.safe_load(f)
+
+    os.makedirs(os.path.join(os.path.dirname(__file__), "..", "data"), exist_ok=True)
 
     papers = search_papers(**cfg["search"])
     print(f"Found {len(papers)} papers in the last {cfg['search']['days_back']} days")
